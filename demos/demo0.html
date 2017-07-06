@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title></title>
+  <script>
+  var errorFileNames = []
+  window.onerror = function (e) {
+    // console.log('listener', e)
+    //errorFileNames.push(e.filename)
+    //return true
+  }
+  window.addEventListener('error', function (e) {
+    console.log('listener', e)
+    errorFileNames.push(e.filename)
+  }, true)
+  </script>
+  <script src="assets/js/syntax-error.js"></script>
+  <script src="assets/js/reference-error.js"></script>
+  <script src="assets/js/range-error.js"></script>
+  <script src="assets/js/type-error.js"></script>
+  <script src="assets/js/resource-load-error.js"></script>
+  <script src="assets/js/promise-error-1.js"></script>
+  <script src="assets/js/promise-error-2.js"></script>
+  <script src="assets/js/timeout-error.js"></script>
+</head>
+<body>
+  <img src="null2.jpg">
+  <script>
+  var scripts = Array.prototype.slice.call(document.querySelectorAll('script')).filter(script => script.src).map(script => script.src)
+  </script>
+</body>
+</html>
