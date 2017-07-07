@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <script src="https://cdn.jsdelivr.net/bluebird/latest/bluebird.min.js"></script>
+  <title></title>
+  <script>
+  var errorFileNames = []
+  window.onerror = function (e) {
+    console.log('listener', e)
+    errorFileNames.push(e.filename)
+  }
+  window.addEventListener('unhandledrejection', function (error) { console.log('unhandledrejection', arguments) })
+
+  </script>
+  <script src="assets/js/promise-error-1.js"></script>
+  <script src="assets/js/promise-error-2.js"></script>
+</head>
+<body>
+  <script>
+  var scripts = Array.prototype.slice.call(document.querySelectorAll('script')).filter(script => script.src).map(script => script.src)
+  </script>
+</body>
+</html>

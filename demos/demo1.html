@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <script src="assets/js/fm.js"></script>
+  <title></title>
+  <script>
+  var track = []
+  window.onerror = function (error) {
+    console.log('origin window.onerror', error)
+  }
+  window.onerror._best_ = 'jack'
+  wrapFunc(window, 'onerror', function (error) {
+    console.log('before native onerror', error)
+  }, function (error) {
+    console.log('after native onerror', error)
+  }, track)
+  </script>
+  <script>
+  document.onclick = function () { throw new Error('an error') }
+  </script>
+</head>
+<body>
+  <div></div>
+</body>
+</html>

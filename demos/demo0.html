@@ -7,14 +7,22 @@
   <script>
   var errorFileNames = []
   window.onerror = function (e) {
-    // console.log('listener', e)
+    console.log('listener', arguments)
     //errorFileNames.push(e.filename)
     //return true
   }
-  window.addEventListener('error', function (e) {
-    console.log('listener', e)
-    errorFileNames.push(e.filename)
-  }, true)
+
+  function invoke(obj, method, args) {
+    try {
+      return obj[method].apply(this, args);
+    } catch (e) {
+      // captureError(e); // report the error
+      console.log('try-catch', e)
+      throw e; // re-throw the error
+    }
+  }
+
+  invoke(Math, 'highest', [1, 2]);
   </script>
   <script src="assets/js/syntax-error.js"></script>
   <script src="assets/js/reference-error.js"></script>
