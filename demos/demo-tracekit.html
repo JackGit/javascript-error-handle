@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <script src="assets/js/tracekit.js"></script>
+  <script>
+  function report (e) {
+    TraceKit.report(e)
+  }
+
+  TraceKit.report.subscribe(function yourLogger(errorReport) {
+    console.log('TRACEKIT', errorReport)
+  })
+
+  TraceKit.remoteFetching = false
+  TraceKit.collectWindowErrors = false
+  </script>
+  <script src="assets/js/tracekit-demo.js"></script>
+  <title></title>
+</head>
+<body onclick="handleClick()">
+  <div>click me to generate error<div>
+  <script src="assets/js/syntax-error.js"></script>
+  <script src="assets/js/reference-error.js"></script>
+  <script src="assets/js/promise-error-1.js"></script>
+  <script src="assets/js/promise-error-2.js"></script>
+</body>
+</html>
